@@ -18,15 +18,16 @@
       }
     },
     {
-      "files": [
-        "**/__tests__/**/*.[jt]s?(x)",
-        "**/?(*.)+(spec|test).[jt]s?(x)"
-      ],
+      "files": ["src/**/*.test.ts?(x)"],
       "extends": [
         "plugin:jest/recommended",
         "plugin:jest/style",
         "plugin:testing-library/react"
       ]
+    },
+    {
+      "files": ["e2e/**/*.test.ts"],
+      "extends": ["plugin:playwright/recommended"]
     }
   ],
   "rules": {
