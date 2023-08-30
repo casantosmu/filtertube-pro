@@ -1,6 +1,6 @@
-type HeadingProps = {
+interface HeadingProps {
   children: string;
-};
+}
 
 export const Heading = ({ children }: HeadingProps): JSX.Element => {
   return (

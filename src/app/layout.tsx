@@ -10,14 +10,16 @@ export const metadata: Metadata = {
     "Supercharge YouTube Search: More filters, more control. Your video exploration, amplified.",
 };
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+}
+
+const RootLayout = ({ children }: RootLayoutProps): JSX.Element => {
   return (
     <html lang="en">
       <body className={robotoFlex.className}>{children}</body>
     </html>
   );
-}
+};
+
+export default RootLayout;

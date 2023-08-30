@@ -1,10 +1,11 @@
-import { Heading } from "@/components/typography/Heading/Heading";
-import Image from "next/image";
+import { Heading } from "@/components/typography/heading/Heading";
 
-export default function Home() {
+const Home = (): JSX.Element => {
   return (
-    <main className="min-h-screen flex justify-center items-center pb-80">
+    <main className="flex min-h-screen items-center justify-center pb-80">
       <Heading>Hello world!</Heading>
     </main>
   );
-}
+};
+
+export default Home;
