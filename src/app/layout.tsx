@@ -14,12 +14,10 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-const RootLayout = ({ children }: RootLayoutProps): JSX.Element => {
+export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
     <html lang="en">
       <body className={robotoFlex.className}>{children}</body>
     </html>
   );
-};
-
-export default RootLayout;
+}
