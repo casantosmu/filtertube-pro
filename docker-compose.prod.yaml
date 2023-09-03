@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nextj:
-    build: .
+    image: ghcr.io/casantosmu/filtertube-pro:main
     restart: unless-stopped
     environment:
       - VIRTUAL_HOST=filtertube-pro.casantosmu.com,www.filtertube-pro.casantosmu.com
