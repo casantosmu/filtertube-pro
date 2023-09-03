@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  nextj:
+    image: ghcr.io/casantosmu/filtertube-pro:main
+    restart: unless-stopped
+    environment:
+      - VIRTUAL_HOST=filtertube-pro.casantosmu.com,www.filtertube-pro.casantosmu.com
+      - LETSENCRYPT_HOST=filtertube-pro.casantosmu.com,www.filtertube-pro.casantosmu.com
+    expose:
+      - "3000"
+    networks:
+      - reverse-proxy
+
+networks:
+  reverse-proxy:
+    external: true
