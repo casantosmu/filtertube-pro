@@ -1,9 +1,9 @@
-import fetcher from "@/lib/http/fetcher";
 import { z } from "zod";
 import {
   YOUTUBE_GOOGLE_API_BASE_URL,
   YOUTUBE_GOOGLE_API_KEY,
-} from "../constants";
+} from "@/services/youtube/constants";
+import fetcher from "@/lib/http/fetcher";
 
 const searchChannelsByName200Schema = z.object({
   kind: z.string(),

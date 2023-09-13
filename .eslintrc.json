@@ -39,6 +39,19 @@
       2,
       { "namedComponents": "function-declaration" }
     ],
-    "import/prefer-default-export": "error"
+    "import/prefer-default-export": "error",
+    "import/order": "error",
+    "object-shorthand": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": ["./*/", "**../"],
+            "message": "Relative imports are not allowed."
+          }
+        ]
+      }
+    ]
   }
 }
