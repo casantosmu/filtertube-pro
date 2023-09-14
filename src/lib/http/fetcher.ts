@@ -8,7 +8,11 @@ const fetcher = {
     const text = await response.text();
 
     if (!response.ok) {
-      throw new Error(`'${response.statusText}': ${text}`);
+      throw new Error(`
+        Error occurred while making a GET request to '${endpoint}':
+        - Response Status: ${response.status} (${response.statusText})
+        - Server Error Message: ${text}
+      `);
     }
 
     return JSON.parse(text) as T;

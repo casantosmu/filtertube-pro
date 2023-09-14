@@ -1,6 +1,6 @@
 export interface UrlOptions {
   path?: string;
-  params?: Record<string, string>;
+  params?: Record<string, string | number>;
 }
 
 export default function buildUrl(url: string, options?: UrlOptions): string {
@@ -8,7 +8,7 @@ export default function buildUrl(url: string, options?: UrlOptions): string {
 
   if (options?.params) {
     Object.entries(options.params).forEach(([key, value]) => {
-      result.searchParams.append(key, value);
+      result.searchParams.append(key, value.toString());
     });
   }
 
