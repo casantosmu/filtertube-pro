@@ -1,21 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
 import classnames from "./classnames";
 
 describe("Classnames", () => {
   const testCases = [
     {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       inputs: [true && "foo", false && "bar"],
       expected: "foo",
     },
     {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       inputs: [false && "foo", true && "bar"],
       expected: "bar",
     },
     {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition, no-constant-condition
-      inputs: [true && "foo"],
-      expected: "foo",
+      inputs: [false],
+      expected: "",
+    },
+    {
+      inputs: ["foo", "bar"],
+      expected: "foo bar",
     },
   ];
 

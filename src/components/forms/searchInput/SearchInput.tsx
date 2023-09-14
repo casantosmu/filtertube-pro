@@ -16,7 +16,7 @@ export default function SearchInput({
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <form>
+    <form className="w-full">
       <label
         htmlFor={id}
         className="sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white"
