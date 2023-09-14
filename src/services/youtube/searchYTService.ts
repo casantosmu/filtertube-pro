@@ -48,7 +48,7 @@ interface Result {
 
 interface Props {
   filter: string;
-  maxResults: number;
+  maxResults?: number;
   pageToken?: string;
 }
 
@@ -61,11 +61,11 @@ export default async function searchYTService({
     path: "/youtube/v3/search",
     params: {
       part: "snippet",
-      maxResults,
       order: "relevance",
       q: filter,
       type: "channel",
       key: YOUTUBE_GOOGLE_API_KEY,
+      ...(maxResults && { maxResults }),
       ...(pageToken && { pageToken }),
     },
   });

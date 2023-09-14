@@ -14,7 +14,7 @@ interface Result {
 
 interface Props {
   filter: string;
-  maxResults: number;
+  maxResults?: number;
   pageToken?: string;
 }
 
@@ -27,7 +27,7 @@ export default function searchApiService({
     path: "/api/search",
     params: {
       filter,
-      maxResults,
+      ...(maxResults && { maxResults }),
       ...(pageToken && { pageToken }),
     },
   });

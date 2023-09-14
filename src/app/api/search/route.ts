@@ -6,7 +6,7 @@ import searchYTService from "@/services/youtube/searchYTService";
 const searchParamsSchema = z
   .object({
     filter: z.string(),
-    maxResults: z.coerce.number(),
+    maxResults: z.coerce.number().optional(),
     pageToken: z.string().optional(),
   })
   .strict();
