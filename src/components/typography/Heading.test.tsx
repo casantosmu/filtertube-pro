@@ -4,7 +4,7 @@ import Heading from "./Heading";
 
 describe("Heading", () => {
   describe("when received 'Hello' as children and 'h1' as variant", () => {
-    it("should render a heading with level 1 with the received text", () => {
+    it("should render a 'h1' with the received text", () => {
       const text = "Hello";
 
       render(<Heading variant="h1">{text}</Heading>);
@@ -19,7 +19,7 @@ describe("Heading", () => {
   });
 
   describe("when received 'h1' as variant and 'h2' as", () => {
-    it("should render a heading with level 2", () => {
+    it("should render a 'h2'", () => {
       render(
         <Heading variant="h1" as="h2">
           foo
