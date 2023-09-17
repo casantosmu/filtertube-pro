@@ -3,21 +3,20 @@ import useQueryApi from "./useQueryApi";
 
 describe("useQueryApi", () => {
   describe("with a resolving callback and provided arguments", () => {
-    it("should transition from 'loading' to 'success' with the result and call callback with provided arguments", async () => {
+    it("should call callback with provided arguments and transition from 'loading' to success' with the resolved value", async () => {
       const resolvesTo = "foo";
       const args = { foo: "bar" };
-      const callbackFn = jest.fn().mockResolvedValue(resolvesTo);
+      const fetchFn = jest.fn().mockResolvedValueOnce(resolvesTo);
 
-      const { result } = renderHook(() => useQueryApi(callbackFn, args));
+      const { result } = renderHook(() => useQueryApi(fetchFn, args));
 
-      expect(callbackFn).toHaveBeenCalledWith(args);
-      expect(callbackFn).toHaveBeenCalledTimes(1);
+      expect(fetchFn).toHaveBeenCalledWith(args);
+      expect(fetchFn).toHaveBeenCalledTimes(1);
       expect(result.current).toStrictEqual({
         status: "loading",
         result: undefined,
         error: undefined,
       });
-
       await waitFor(() => {
         expect(result.current).toStrictEqual({
           status: "success",
@@ -29,21 +28,20 @@ describe("useQueryApi", () => {
   });
 
   describe("with a rejecting callback and provided arguments", () => {
-    it("should transition from 'loading' to 'error' with the error message and call callback with provided arguments", async () => {
+    it("call callback with provided arguments and should transition from 'loading' to 'error' with the rejected error", async () => {
       const rejectsTo = "Big error";
       const args = { foo: "bar" };
-      const callbackFn = jest.fn().mockRejectedValueOnce(rejectsTo);
+      const fetchFn = jest.fn().mockRejectedValueOnce(rejectsTo);
 
-      const { result } = renderHook(() => useQueryApi(callbackFn, args));
+      const { result } = renderHook(() => useQueryApi(fetchFn, args));
 
-      expect(callbackFn).toHaveBeenCalledWith(args);
-      expect(callbackFn).toHaveBeenCalledTimes(1);
+      expect(fetchFn).toHaveBeenCalledWith(args);
+      expect(fetchFn).toHaveBeenCalledTimes(1);
       expect(result.current).toStrictEqual({
         status: "loading",
         result: undefined,
         error: undefined,
       });
-
       await waitFor(() => {
         expect(result.current).toStrictEqual({
           status: "error",

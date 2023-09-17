@@ -7,7 +7,7 @@ import SearchItem from "@/core/entities/SearchItem";
 import fetcher from "@/lib/http/fetcher";
 
 const responseSchema = z.object({
-  kind: z.string(),
+  kind: z.literal("youtube#searchListResponse"),
   etag: z.string(),
   prevPageToken: z.string().optional(),
   nextPageToken: z.string().optional(),
@@ -15,9 +15,12 @@ const responseSchema = z.object({
   pageInfo: z.object({ totalResults: z.number(), resultsPerPage: z.number() }),
   items: z.array(
     z.object({
-      kind: z.string(),
+      kind: z.literal("youtube#searchResult"),
       etag: z.string(),
-      id: z.object({ kind: z.string(), channelId: z.string() }),
+      id: z.object({
+        kind: z.literal("youtube#channel"),
+        channelId: z.string(),
+      }),
       snippet: z.object({
         publishedAt: z.string(),
         channelId: z.string(),
@@ -30,7 +33,7 @@ const responseSchema = z.object({
         }),
         channelTitle: z.string(),
         liveBroadcastContent: z.string(),
-        publishTime: z.string(),
+        publishTime: z.coerce.date(),
       }),
     }),
   ),
